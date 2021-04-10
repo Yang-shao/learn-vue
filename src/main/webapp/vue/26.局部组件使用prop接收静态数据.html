@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>26.局部组件使用prop接收数据</title>
+</head>
+<body>
+<div id="app">
+    <!-- html本身对大小写不敏感，所有当需要使用类似驼峰写法的时候，是由“-”分隔开 -->
+    <login user-name="小杨"></login>
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    // 声明一个组件配置对象
+    let login = {
+        props:['userName'],
+        template:"<div><h1>欢迎：{{ userName }}</h1></div>"
+    }
+
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+            // 注册组件
+            login:login
+        }
+    });
+</script>
+</body>
+</html>

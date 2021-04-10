@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14.vue的v-for的使用</title>
+</head>
+<body>
+<div id="app">
+    <span> {{ user.name }}  {{ user.age }} </span>
+    <br>
+
+    <!-- 1.使用v-for遍历对象1 遍历整个对象-->
+    <span v-for="u in user">
+        {{ u }}
+    </span>
+    <br>
+    <!-- 2.使用v-for遍历对象2 遍历对象中的每一个属性-->
+    <span v-for="(value, key, index) in user">
+        {{ index }} : {{ key }} : {{ value }}
+    </span>
+
+    <hr>
+    <!-- 3.使用v-for遍历数组 -->
+    <ul>
+        <li v-for="a,index in arr">
+            {{ index }} : {{ a }}
+        </li>
+    </ul>
+
+    <hr>
+    <!-- 4.使用v-for遍历对象数组 -->
+    <!-- 使用:key 是便于vue内部做重用和排序 -->
+    <ul>
+        <li v-for="user,index in users" :key="user.id">
+            {{ index+1 }}:{{ user.name }} --- {{ user.age }} --- {{ user.content }}
+        </li>
+    </ul>
+
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            user:{name:"小杨", age:23},
+            users:[
+                {id:0, name:"小白", age:23, content:"我曾经是一个单纯的少年"},
+                {id:1, name:"小黑", age:23, content:"我曾经是一个邪恶的少年"}
+            ],
+            arr:[
+                "北京校区",
+                "上海校区",
+                "广东校区",
+                "深圳校区"
+            ]
+        },
+        methods: {},
+        components: {}
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18.vue中的按键修饰符</title>
+</head>
+<body>
+    <div id="app">
+        <!-- .enter按键修饰符，在回车之后触发的事件 -->
+        <input type="text" v-model="message1" @keyup.enter="enterKeyUp">
+        <input type="text" v-model="message2" @keyup.tab="tabKeyUp">
+        <input type="text" v-model="message3" @keyup.esc="escKeyUp">
+        <input type="text" v-model="message4" @keyup.delete="deleteKeyUp">
+    </div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message1:"",
+            message2:"",
+            message3:"",
+            message4:""
+        },
+        methods: {
+            enterKeyUp() {
+                console.log(this.message1);
+            },
+            tabKeyUp() {
+                console.log(this.message2);
+            },
+            escKeyUp() {
+                console.log(this.message3);
+            },
+            deleteKeyUp() {
+                console.log(this.message4);
+            }
+        },
+        components: {}
+    });
+</script>
+</body>
+</html>

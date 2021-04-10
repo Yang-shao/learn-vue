@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue的事件使用</title>
+    </head>
+    <body>
+        <div id="app">
+            <span>count:{{ count }}</span>
+            <br>
+            <input type="button" value="改变count为指定的值" @click="changeCount(23)">
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+           const app = new Vue({
+               el:"#app", // element：用来指定vue的作用范围
+               data:{
+                   count:1
+               },   // data：用来定义vue实例中相关数据
+               methods:{  // methods：用来定义事件的处理函数
+                   changeCount(count) {
+                       this.count = count;
+                   }
+               }
+           })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue的第一个入门案例</title>
+    </head>
+    <body>
+        <div id="app">
+            <span>{{ msg }}</span>
+            <br>
+            <span v-html="msg"></span>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+           const app = new Vue({
+               el:"#app",
+               data:{
+                   msg:"<a href=''>hello v-text</a>"
+               }
+           })
+        </script>
+    </body>
+</html>

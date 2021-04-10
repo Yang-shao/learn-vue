@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>19.Axios的GET方式请求</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    // 发送GET请求
+    axios.get("http://localhost:8090/findAll?paraValue=get请求方式参数").then(function (response) {
+        console.log(response.data);
+    }).catch(function (err) {
+        console.log(err);
+    });
+
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {}
+    });
+</script>
+</body>
+</html>

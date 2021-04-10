@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16.记事本综合案例</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="message">
+        <input type="button" value="添加到记事本" @click="addItem"><br>
+
+        <ul>
+            <li v-for="item,index in lists">
+                {{ index+1 }} {{ item }} <a href="javascript:;" @click="delItem(index)">删除</a>
+            </li>
+        </ul>
+        <br>
+
+        <span>总数量：{{ lists.length }} 条</span>
+        <input type="button" value="删除所有" v-show="lists.length!=0" @click="delAll">
+    </div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            message:"",
+            lists:[
+                "加油努力",
+                "明天会更好"
+            ]
+        },
+        methods: {
+            addItem() {
+                if (this.message!="") {
+                    this.lists.push(this.message);
+                    this.message = "";
+                }
+            },
+            delItem(index) {
+                // 参数1：表示从哪个下标开始删除  参数2：删除几个元素
+                this.lists.splice(index, 1);
+            },
+            delAll() {
+                this.lists = [];
+            }
+        },
+        components: {}
+    });
+</script>
+</body>
+</html>

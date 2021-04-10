@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的v-if的使用</title>
+</head>
+<body>
+
+    <div id="app">
+        <h2 v-if="false">你好，大周末</h2>
+        <h2 v-if="show">你好，大周末!</h2>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                show:true
+            },
+            methods:{
+
+            }
+        });
+
+    </script>
+
+</body>
+</html>

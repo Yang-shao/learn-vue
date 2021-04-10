@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue的第一个入门案例</title>
+    </head>
+    <body>
+        <div id="app">
+            <h3>名称：{{ user.name }}, 描述信息：{{ user.msg }}</h3>
+            <h3>年龄：{{ age }}</h3>
+            <h3>{{ lists[0] }}---{{ lists[1] }}---{{ lists[2] }}</h3>
+            <h3>{{ users[0].name }}</h3>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            const app = new Vue({
+                el:"#app", // element用来给vue定义一个作用范围
+                data:{ // 用来给vue实例定义一些相关数据
+                    msg:"hello vue",
+                    user:{name:"vue对象名称", msg:"vue对象描述"},
+                    age:23,
+                    lists:["广东","福建","上海"],
+                    // 在js中，只有数组的概念，没有集合的概念
+                    users:[{name:"小黑",age:23},{name:"小红",age:24}]
+                }
+            });
+        </script>
+    </body>
+</html>

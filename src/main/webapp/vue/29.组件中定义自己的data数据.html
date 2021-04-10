@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>29.组件中定义自己的data数据</title>
+</head>
+<body>
+<div id="app">
+    <login></login>
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    // 声明组件配置对象
+    const login = {
+        template:"<div><h1>明天会更好</h1></div>",
+
+    }
+
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {
+            // 注册组件
+            login:login
+        }
+    });
+</script>
+</body>
+</html>

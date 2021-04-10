@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vue的事件使用</title>
+    </head>
+    <body>
+        <div id="app">
+            <h2>{{ message }}</h2>
+            <h2 v-text="message"></h2>
+            <h3>年龄：{{ age }}</h3>
+            <input type="button" value="点我改变年龄" v-on:click="changeAge">
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+           const app = new Vue({
+               el:"#app",
+               data:{
+                   message:"vue的事件使用",
+                   age:23
+               },
+               methods:{ //methods用来定义vue中的事件
+                    changeAge:function () {
+                        // 在函数中获取vue实例中data的数据，在事件函数中this就是vue实例，日后可以在
+                        // 事件中通过this获取vue实例中的相关数据
+                        // this.age = this.age+1;
+                        this.age++;
+                    }
+               }
+           })
+        </script>
+    </body>
+</html>

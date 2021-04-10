@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的v-bind的使用</title>
+    <style>
+        .aa{
+            border: 2px brown solid;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- vue提供简化v-bind的写法，如v-bind:属性名 可以简写为 :属性名 -->
+
+        <!--<img v-bind:class="imgCss" src="http://b1-q.mafengwo.net/s11/M00/5E/FF/wKgBEFqVLk2AFiYLABMkxYGKI5842.jpeg?imageMogr2%2Fthumbnail%2F%21320x170r%2Fgravity%2FCenter%2Fcrop%2F%21320x170%2Fquality%2F100"
+             v-bind:title="msg" alt="潮州美食">-->
+        <!--<img v-bind:class="showCss?'aa':''" src="http://b1-q.mafengwo.net/s11/M00/5E/FF/wKgBEFqVLk2AFiYLABMkxYGKI5842.jpeg?imageMogr2%2Fthumbnail%2F%21320x170r%2Fgravity%2FCenter%2Fcrop%2F%21320x170%2Fquality%2F100"
+             v-bind:title="msg" alt="潮州美食">-->
+        <!--<img width="300" v-bind:class="{aa:showCss}" v-bind:src="src" v-bind:title="msg" alt="潮州美食">-->
+        <img width="300" :class="{aa:showCss}" :src="src" :title="msg" alt="潮州美食">
+
+        <input type="button" value="动态控制加入样式" @click="addCss">
+        <input type="button" value="改变图片" @click="changeSrc">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                msg:"潮州美食!!!",
+                imgCss:"aa",
+                showCss:true,
+                src:"http://b1-q.mafengwo.net/s11/M00/5E/FF/wKgBEFqVLk2AFiYLABMkxYGKI5842.jpeg?imageMogr2%2Fthumbnail%2F%21320x170r%2Fgravity%2FCenter%2Fcrop%2F%21320x170%2Fquality%2F100"
+            },
+            methods:{
+                addCss() {
+                    this.showCss = !this.showCss;
+                },
+                changeSrc() {
+                    this.src = "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3866427781,859233610&fm=26&gp=0.jpg";
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>

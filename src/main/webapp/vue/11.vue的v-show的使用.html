@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue的v-show的使用</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- v-show是用来控制标签展示还是隐藏的 -->
+        <h2 v-show="false">今天天气很不错！</h2>
+        <h2 v-show="show">今天天气很不错！！</h2>
+        <input type="button" value="展示隐藏标签" @click="showMsg">
+
+        <br>
+
+        <h2 v-show="age>=30">今天是周日，周末的时光得好好珍惜</h2>
+        <input type="button" value="修改变量值控制标签的显示" @click="changeAge">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:"#app",
+            data:{
+                show:false,
+                age:23
+            },
+            methods:{
+                showMsg() {
+                    // this.show = true;
+                    this.show = !this.show;
+                },
+                changeAge() {
+                    this.age++;
+                    console.log(this.age);
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

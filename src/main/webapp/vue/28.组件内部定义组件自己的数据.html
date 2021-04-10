@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>28.组件内部定义组件自己的数据</title>
+</head>
+<body>
+<div id="app">
+    <login v-bind:username="username"></login>
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    let login = {
+        template: "<div><h1>欢迎：{{ name }} ===  {{ username }}</h1></div>",
+        props:['username'],
+        data() {
+            // 组件中属于组件自己的data数据, 注意与vue实例中data属性写法的区别
+            return {
+                name:"小黑"
+            };
+        }
+    }
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            username:"小黑黑"
+        },
+        methods: {},
+        components: {
+            login:login
+        }
+    });
+</script>
+</body>
+</html>

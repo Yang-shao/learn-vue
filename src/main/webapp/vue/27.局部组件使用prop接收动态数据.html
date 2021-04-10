@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>27.使用prop接收动态数据</title>
+</head>
+<body>
+<div id="app">
+    <login v-bind:name="name" v-bind:age="age"></login>
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    let login = {
+        props:['name', 'age'],
+        template:"<div><h1>欢迎：{{ name }} 年龄：{{ age }}</h1></div>"
+    }
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            name:"小琳琳",
+            age:24
+        },
+        methods: {},
+        components: {
+            login:login
+        }
+    });
+</script>
+</body>
+</html>
