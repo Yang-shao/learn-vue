@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>31.向组件中传递事件并调用</title>
+</head>
+<body>
+<div id="app">
+    <!-- 使用组件 -->
+    <login :name="username" @find="findAll"></login>
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    // 声明组件
+    const login = {
+        template:"<div><h1>明天会更好 {{ uname }}</h1><input type='button' value='点我' @click='change'></div>",
+        // 定义向模板传值的参数名
+        props:["name"],
+        // 定义模板实例的一些数据
+        data() {
+            return {
+                uname:this.name
+            }
+        },
+        methods: {
+            change() {
+                //alert("越努力越幸运");
+                this.$emit("find");
+            }
+        }
+    }
+
+    const app = new Vue({
+        el: "#app",
+        data: {
+            // 这是父组件的值，加入把这个值绑定传递给子组件中，父组件可以修改这个值，子组件不可以修改这个值
+            username:"小杨少"
+        },
+        methods: {
+            findAll() {
+                alert("Vue实例中的函数被调用了");
+            }
+        },
+        components: {
+            // 组件注册
+            login:login
+        }
+    });
+</script>
+</body>
+</html>
