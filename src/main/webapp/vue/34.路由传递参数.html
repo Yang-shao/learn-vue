@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>34.路由传递参数</title>
+</head>
+<body>
+<div id="app">
+    <router-link to="/login?id=23&name=Yangshao" tag="button">点我登录</router-link>
+    <router-link to="/register/120/张三" tag="button">点我注册</router-link>
+    <router-view></router-view>
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Vue路由 -->
+<script src="https://unpkg.com/vue-router/dist/vue-router.js "></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    // 声明组件
+    const login = {
+        template:"<h1>用户登录</h1>",
+        data() {
+            return {}
+        },
+        methods:{},
+        created() {
+            console.log("===========>" + this.$route.query.id + "===========>" + this.$route.query.name);
+        }
+    }
+    const register = {
+        template:"<h1>点我注册</h1>",
+        data() {
+            return {}
+        },
+        methods:{},
+        created() {
+            console.log("注册组件中id:" + this.$route.params.id + " name:" + this.$route.params.name);
+        }
+    }
+
+    // 创建路由对象
+    const router = new VueRouter({
+        routes:[
+            {path:"/", redirect:"/login"},
+            {path:"/login", component:login},
+            // restful的方式传递参数
+            {path:"/register/:id/:name", component:register}
+        ]
+    });
+
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {},
+        router:router
+    });
+</script>
+</body>
+</html>
