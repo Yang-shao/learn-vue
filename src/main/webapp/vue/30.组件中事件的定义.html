@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>29.组件中定义自己的data数据</title>
+    <title>30.组件中事件的定义</title>
 </head>
 <body>
 <div id="app">
@@ -13,15 +13,19 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <!-- 引入Axios -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script>
+        <script>
 
-    // 声明组件配置对象
     const login = {
-        template:"<div><h1>{{ message }} {{ date }}</h1></div>",
+        template:'<div><input type="button" value="点我触发事件中的事件" @click="change"></div>',
         data() {
             return {
-                message:"明天会更好",
-                date: new Date()
+                message:"加油努力"
+            }
+        },
+        methods: {
+            change() {
+                alert(this.message);
+                alert("触发事件");
             }
         }
     }
@@ -31,7 +35,6 @@
         data: {},
         methods: {},
         components: {
-            // 注册组件
             login:login
         }
     });
