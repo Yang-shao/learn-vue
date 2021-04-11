@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>33.router-link和默认路由使用</title>
+</head>
+<body>
+<div id="app">
+   <!-- <a href="#/login">用户登录</a>
+    <a href="#/register">点我注册</a>-->
+
+    <!-- 使用router-link 好处：书写路由路径不需要# to:用来书写路由路径 -->
+    <router-link to="/login" tag="button">登录</router-link>
+    <router-link to="/register" tag="button">注册</router-link>
+
+    <router-view></router-view>
+</div>
+
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 引入Vue路由 -->
+<script src="https://unpkg.com/vue-router/dist/vue-router.js "></script>
+<!-- 引入Axios -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    // 声明组件，注意，当组件和路由一起使用，则组件无须注册到Vue中
+    const login = {
+        template:"<h1>用户登录</h1>"
+    }
+    const register = {
+        template: "<h1>用户注册</h1>"
+    }
+
+    // 创建路由对象
+    const router = new VueRouter({
+        routes:[
+            // {path:"/", component:login},
+            {path:"/", redirect:"/login"}, // redirect:用来当访问的是默认路由“/”,跳转到指定的路由暂时
+            {path:"/login", component:login},
+            {path:"/register", component:register}
+        ]
+    });
+
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components: {},
+        router:router
+    });
+</script>
+</body>
+</html>
